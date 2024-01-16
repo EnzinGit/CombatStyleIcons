@@ -1,2 +1,2 @@
-# Example
-An example greeter plugin
+# Iconify
+Used for marking combat styles
