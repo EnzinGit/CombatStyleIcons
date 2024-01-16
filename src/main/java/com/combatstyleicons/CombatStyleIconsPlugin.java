@@ -20,7 +20,7 @@ import static net.runelite.api.MenuAction.MENU_ACTION_DEPRIORITIZE_OFFSET;
 
 @Slf4j
 @PluginDescriptor(
-	name = "Iconify", description = "Used for marking combat styles", tags = {"icon", "style", "tag", "tags", "type", "iconify"}
+	name = "Combat Style Icons", description = "Used for marking combat styles", tags = {"icon", "style", "tag", "tags", "type", "iconify"}
 )
 public class CombatStyleIconsPlugin extends Plugin
 {
@@ -42,7 +42,7 @@ public class CombatStyleIconsPlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
-		log.info("Example started!");
+		//log.info("Example started!");
 		CombatStyleIconsPlugin.instance = this;
 		overlayManager.add(npcOverlay);
 	}
@@ -65,7 +65,7 @@ public class CombatStyleIconsPlugin extends Plugin
 	@Override
 	protected void shutDown() throws Exception
 	{
-		log.info("Example stopped!");
+		//log.info("Example stopped!");
 	}
 
 	@Subscribe
@@ -87,7 +87,7 @@ public class CombatStyleIconsPlugin extends Plugin
 			// Only show draw options to npcs not affected by a wildcard entry, as wildcards will not be removed by menu options
 
 			MenuEntry test = client.createMenuEntry(-1)
-					.setOption(ColorUtil.prependColorTag("Iconify", Color.cyan))
+					.setOption(ColorUtil.prependColorTag("Combat Icon", Color.cyan))
 
 					.setTarget(event.getTarget())
 					.setIdentifier(event.getIdentifier())
@@ -127,13 +127,13 @@ public class CombatStyleIconsPlugin extends Plugin
 	{
 		if(this.checkContains(click.getNpc().getId(), config.meleeSelections()))
 		{
-			configManager.setConfiguration("iconify", "meleeSelections", config.meleeSelections().replaceAll(click.getNpc().getId() + " ", ""));
+			configManager.setConfiguration("csi", "meleeSelections", config.meleeSelections().replaceAll(click.getNpc().getId() + " ", ""));
 		}else if(this.checkContains(click.getNpc().getId(), config.magicSelections()))
 		{
-			configManager.setConfiguration("iconify", "magicSelections", config.magicSelections().replaceAll(click.getNpc().getId() + " ", ""));
+			configManager.setConfiguration("csi", "magicSelections", config.magicSelections().replaceAll(click.getNpc().getId() + " ", ""));
 		}else if(this.checkContains(click.getNpc().getId(), config.rangeSelections()))
 		{
-			configManager.setConfiguration("iconify", "rangeSelections", config.rangeSelections().replaceAll(click.getNpc().getId() + " ", ""));
+			configManager.setConfiguration("csi", "rangeSelections", config.rangeSelections().replaceAll(click.getNpc().getId() + " ", ""));
 		}
 	}
 
@@ -144,13 +144,13 @@ public class CombatStyleIconsPlugin extends Plugin
 		switch(type)
 		{
 			case Magic:
-				configManager.setConfiguration("example", "magicSelections", config.magicSelections() + click.getNpc().getId() + " ");
+				configManager.setConfiguration("csi", "magicSelections", config.magicSelections() + click.getNpc().getId() + " ");
 				break;
 			case Melee:
-				configManager.setConfiguration("example", "meleeSelections", config.meleeSelections() + click.getNpc().getId() + " ");
+				configManager.setConfiguration("csi", "meleeSelections", config.meleeSelections() + click.getNpc().getId() + " ");
 				break;
 			case Range:
-				configManager.setConfiguration("example", "rangeSelections", config.rangeSelections() + click.getNpc().getId() + " ");
+				configManager.setConfiguration("csi", "rangeSelections", config.rangeSelections() + click.getNpc().getId() + " ");
 				break;
 		}
 	}
