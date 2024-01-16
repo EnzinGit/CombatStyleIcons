@@ -127,13 +127,13 @@ public class IconifyPlugin extends Plugin
 	{
 		if(this.checkContains(click.getNpc().getId(), config.meleeSelections()))
 		{
-			configManager.setConfiguration("example", "meleeSelections", config.meleeSelections().replaceAll(click.getNpc().getId() + " ", ""));
+			configManager.setConfiguration("iconify", "meleeSelections", config.meleeSelections().replaceAll(click.getNpc().getId() + " ", ""));
 		}else if(this.checkContains(click.getNpc().getId(), config.magicSelections()))
 		{
-			configManager.setConfiguration("example", "magicSelections", config.magicSelections().replaceAll(click.getNpc().getId() + " ", ""));
+			configManager.setConfiguration("iconify", "magicSelections", config.magicSelections().replaceAll(click.getNpc().getId() + " ", ""));
 		}else if(this.checkContains(click.getNpc().getId(), config.rangeSelections()))
 		{
-			configManager.setConfiguration("example", "rangeSelections", config.rangeSelections().replaceAll(click.getNpc().getId() + " ", ""));
+			configManager.setConfiguration("iconify", "rangeSelections", config.rangeSelections().replaceAll(click.getNpc().getId() + " ", ""));
 		}
 	}
 
