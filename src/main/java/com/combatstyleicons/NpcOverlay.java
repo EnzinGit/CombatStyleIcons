@@ -1,4 +1,4 @@
-package com.iconify;
+package com.combatstyleicons;
 
 import net.runelite.api.Client;
 import net.runelite.client.ui.overlay.*;
@@ -15,7 +15,7 @@ public class NpcOverlay extends Overlay {
     private Client client;
 
     @Inject
-    private IconifyConfig config;
+    private CombatStyleIconsConfig config;
 
     private BufferedImage meleeIcon, rangeIcon, magicIcon;
     @Inject
@@ -31,7 +31,7 @@ public class NpcOverlay extends Overlay {
             this.magicIcon = ImageIO.read(getClass().getResourceAsStream("/Magic_icon.png"));
 
         } catch (IOException e) {
-            IconifyPlugin.instance.doLog(e.getMessage());
+            CombatStyleIconsPlugin.instance.doLog(e.getMessage());
         }
     }
 
@@ -39,17 +39,17 @@ public class NpcOverlay extends Overlay {
     public Dimension render(Graphics2D graphics) {
 
         client.getNpcs().forEach(npc -> {
-            if(IconifyPlugin.instance.checkContains(npc.getId(), config.magicSelections()))
+            if(CombatStyleIconsPlugin.instance.checkContains(npc.getId(), config.magicSelections()))
             {
                 net.runelite.api.Point base = npc.getCanvasImageLocation(this.magicIcon, (npc.getModelHeight() / 2));
                 net.runelite.api.Point png = new net.runelite.api.Point(base.getX(), base.getY());
                 OverlayUtil.renderImageLocation(graphics, png, this.magicIcon);
 
-            }else if(IconifyPlugin.instance.checkContains(npc.getId(), config.meleeSelections())) {
+            }else if(CombatStyleIconsPlugin.instance.checkContains(npc.getId(), config.meleeSelections())) {
                 net.runelite.api.Point base = npc.getCanvasImageLocation(this.meleeIcon, (npc.getModelHeight() / 2));
                 net.runelite.api.Point png = new net.runelite.api.Point(base.getX(), base.getY());
                 OverlayUtil.renderImageLocation(graphics, png, this.meleeIcon);
-            }else if(IconifyPlugin.instance.checkContains(npc.getId(), config.rangeSelections()))
+            }else if(CombatStyleIconsPlugin.instance.checkContains(npc.getId(), config.rangeSelections()))
             {
                 net.runelite.api.Point base = npc.getCanvasImageLocation(this.rangeIcon, (npc.getModelHeight() / 2));
                 net.runelite.api.Point png = new net.runelite.api.Point(base.getX(), base.getY());

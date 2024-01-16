@@ -1,4 +1,4 @@
-package com.iconify;
+package com.combatstyleicons;
 
 import com.google.inject.Provides;
 import javax.inject.Inject;
@@ -22,17 +22,17 @@ import static net.runelite.api.MenuAction.MENU_ACTION_DEPRIORITIZE_OFFSET;
 @PluginDescriptor(
 	name = "Iconify", description = "Used for marking combat styles", tags = {"icon", "style", "tag", "tags", "type", "iconify"}
 )
-public class IconifyPlugin extends Plugin
+public class CombatStyleIconsPlugin extends Plugin
 {
 
-	public static IconifyPlugin instance;
+	public static CombatStyleIconsPlugin instance;
 
 	@Inject
 	private Client client;
 	@Inject
 	private ConfigManager configManager;
 	@Inject
-	private IconifyConfig config;
+	private CombatStyleIconsConfig config;
 
 	@Inject
 	private OverlayManager overlayManager;
@@ -43,7 +43,7 @@ public class IconifyPlugin extends Plugin
 	protected void startUp() throws Exception
 	{
 		log.info("Example started!");
-		IconifyPlugin.instance = this;
+		CombatStyleIconsPlugin.instance = this;
 		overlayManager.add(npcOverlay);
 	}
 
@@ -167,9 +167,9 @@ public class IconifyPlugin extends Plugin
 
 
 	@Provides
-	IconifyConfig provideConfig(ConfigManager configManager)
+	CombatStyleIconsConfig provideConfig(ConfigManager configManager)
 	{
-		return configManager.getConfig(IconifyConfig.class);
+		return configManager.getConfig(CombatStyleIconsConfig.class);
 	}
 
 	public boolean checkContains(int id, String list)

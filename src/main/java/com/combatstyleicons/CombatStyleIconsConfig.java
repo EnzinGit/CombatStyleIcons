@@ -1,11 +1,11 @@
-package com.iconify;
+package com.combatstyleicons;
 
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
 @ConfigGroup("iconify")
-public interface IconifyConfig extends Config
+public interface CombatStyleIconsConfig extends Config
 {
 
 
