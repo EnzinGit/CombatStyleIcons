@@ -2,6 +2,7 @@ package com.combatstyleicons;
 
 import net.runelite.api.Client;
 import net.runelite.client.ui.overlay.*;
+import net.runelite.client.util.ImageUtil;
 
 import javax.imageio.ImageIO;
 import javax.inject.Inject;
@@ -25,14 +26,10 @@ public class NpcOverlay extends Overlay {
         setPosition(OverlayPosition.DYNAMIC);
         setPriority(OverlayPriority.HIGH);
 
-        try {
-            this.meleeIcon = ImageIO.read(getClass().getResourceAsStream("/Attack_icon.png"));
-            this.rangeIcon = ImageIO.read(getClass().getResourceAsStream("/Ranged_icon.png"));
-            this.magicIcon = ImageIO.read(getClass().getResourceAsStream("/Magic_icon.png"));
+            this.meleeIcon = ImageUtil.loadImageResource(this.getClass(), "/Attack_icon.png");
+            this.rangeIcon = ImageUtil.loadImageResource(this.getClass(), "/Ranged_icon.png");
+            this.magicIcon = ImageUtil.loadImageResource(this.getClass(), "/Magic_icon.png");
 
-        } catch (IOException e) {
-            CombatStyleIconsPlugin.instance.doLog(e.getMessage());
-        }
     }
 
     @Override

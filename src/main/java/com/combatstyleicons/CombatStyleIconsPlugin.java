@@ -57,15 +57,13 @@ public class CombatStyleIconsPlugin extends Plugin
 
 
 
-	public void doLog(String txt)
-	{
-		log.info(txt);
-	}
+
 
 	@Override
 	protected void shutDown() throws Exception
 	{
 		//log.info("Example stopped!");
+		overlayManager.remove(npcOverlay);
 	}
 
 	@Subscribe
@@ -80,7 +78,8 @@ public class CombatStyleIconsPlugin extends Plugin
 
 		final MenuAction menuAction = MenuAction.of(type);
 
-		if (menuAction == MenuAction.EXAMINE_NPC && client.isKeyPressed(KeyCode.KC_CONTROL))
+
+		if (menuAction == MenuAction.EXAMINE_NPC && client.isKeyPressed(KeyCode.KC_SHIFT))
 		{
 
 
@@ -127,12 +126,18 @@ public class CombatStyleIconsPlugin extends Plugin
 	{
 		if(this.checkContains(click.getNpc().getId(), config.meleeSelections()))
 		{
+			CombatStyleIconsPlugin.instance.client.addChatMessage(ChatMessageType.BROADCAST, "Combat-Style-Icons", "Removed " + click.getNpc().getName() + " Marker", "HERE 2");
+
 			configManager.setConfiguration("csi", "meleeSelections", config.meleeSelections().replaceAll(click.getNpc().getId() + " ", ""));
 		}else if(this.checkContains(click.getNpc().getId(), config.magicSelections()))
 		{
+			CombatStyleIconsPlugin.instance.client.addChatMessage(ChatMessageType.BROADCAST, "Combat-Style-Icons", "Removed " + click.getNpc().getName() + " Marker", "HERE 2");
+
 			configManager.setConfiguration("csi", "magicSelections", config.magicSelections().replaceAll(click.getNpc().getId() + " ", ""));
 		}else if(this.checkContains(click.getNpc().getId(), config.rangeSelections()))
 		{
+			CombatStyleIconsPlugin.instance.client.addChatMessage(ChatMessageType.BROADCAST, "Combat-Style-Icons", "Removed " + click.getNpc().getName() + " Marker", "HERE 2");
+
 			configManager.setConfiguration("csi", "rangeSelections", config.rangeSelections().replaceAll(click.getNpc().getId() + " ", ""));
 		}
 	}
@@ -144,12 +149,18 @@ public class CombatStyleIconsPlugin extends Plugin
 		switch(type)
 		{
 			case Magic:
+				CombatStyleIconsPlugin.instance.client.addChatMessage(ChatMessageType.BROADCAST, "Combat-Style-Icons", "Added " + click.getNpc().getName() + " Marker", "HERE 2");
+
 				configManager.setConfiguration("csi", "magicSelections", config.magicSelections() + click.getNpc().getId() + " ");
 				break;
 			case Melee:
+				CombatStyleIconsPlugin.instance.client.addChatMessage(ChatMessageType.BROADCAST, "Combat-Style-Icons", "Added " + click.getNpc().getName() + " Marker", "HERE 2");
+
 				configManager.setConfiguration("csi", "meleeSelections", config.meleeSelections() + click.getNpc().getId() + " ");
 				break;
 			case Range:
+				CombatStyleIconsPlugin.instance.client.addChatMessage(ChatMessageType.BROADCAST, "Combat-Style-Icons", "Added " + click.getNpc().getName() + " Marker", "HERE 2");
+
 				configManager.setConfiguration("csi", "rangeSelections", config.rangeSelections() + click.getNpc().getId() + " ");
 				break;
 		}
